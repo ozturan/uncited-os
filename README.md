@@ -90,8 +90,3 @@ uncited-os/
 ## License
 
 MIT. See [LICENSE](LICENSE).
-
-## Credits
-
-Built by Dogancan Ozturan, University of British Columbia ([dogancan.org](https://dogancan.org)).
-uncited-os is the self-hostable core of [uncited.org](https://uncited.org).
