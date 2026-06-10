@@ -1,0 +1,48 @@
+{
+  "name": "uncited-os",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "up": "./up.sh",
+    "populate": "node scripts/fetch.js",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:status": "supabase status",
+    "db:reset": "supabase db reset"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-regular-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.0",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.77.0",
+    "@tanstack/react-virtual": "^3.13.23",
+    "cli-progress": "^3.12.0",
+    "dotenv": "^17.2.3",
+    "katex": "^0.16.25",
+    "next": "^16.0.7",
+    "openai": "^6.15.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "react-katex": "^3.1.0",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-katex": "^3.0.4",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

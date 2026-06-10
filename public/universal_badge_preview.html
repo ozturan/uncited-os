@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Badge Palette Options</title>
+    <style>
+        /* Base Reset */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #e5e5e5;
+            padding: 20px;
+        }
+
+        /* Theme Backgrounds */
+        .theme-light {
+            background-color: #f6f6f7;
+            color: #1a1a1a;
+            border-color: #e5e5e5;
+        }
+
+        .theme-dark {
+            background-color: #0a0a0a;
+            color: #ededed;
+            border-color: #2a2a2a;
+        }
+
+        .theme-sepia {
+            background-color: #f4f1e8;
+            color: #3d3d2e;
+            border-color: #d4c9b8;
+        }
+
+        .theme-coral {
+            background-color: #1a1a1a;
+            color: #d4d4d4;
+            border-color: #333333;
+        }
+
+        .theme-blue {
+            background-color: #0d1f2d;
+            color: #e8f0f5;
+            border-color: #2a4a5e;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .theme-col {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+        }
+
+        .theme-name {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .palette-section {
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .palette-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .palette-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .badge-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        /* Option 1: Modern Solids (Mid-tone BG + White Text) */
+        /* High visibility, clean look. Risks being too bright on dark or too dark on light? */
+        .opt1-research {
+            background-color: #059669;
+            color: #ffffff;
+        }
+
+        /* Emerald 600 */
+        .opt1-review {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        /* Blue 600 */
+        .opt1-letter {
+            background-color: #d97706;
+            color: #ffffff;
+        }
+
+        /* Amber 600 */
+        .opt1-commentary {
+            background-color: #7c3aed;
+            color: #ffffff;
+        }
+
+        /* Violet 600 */
+        .opt1-news {
+            background-color: #e11d48;
+            color: #ffffff;
+        }
+
+        /* Rose 600 */
+
+        /* Option 2: Rich Tints (Lighter BG + Dark Text) - "Premium" look */
+        /* Adjusted current palette: Darker 200/300 BG + Darker 800/900 Text */
+        .opt2-research {
+            background-color: #a7f3d0;
+            color: #064e3b;
+        }
+
+        /* Emerald 200 / 900 */
+        .opt2-review {
+            background-color: #bfdbfe;
+            color: #1e3a8a;
+        }
+
+        /* Blue 200 / 900 */
+        .opt2-letter {
+            background-color: #fde68a;
+            color: #78350f;
+        }
+
+        /* Amber 200 / 900 */
+        .opt2-commentary {
+            background-color: #ddd6fe;
+            color: #4c1d95;
+        }
+
+        /* Violet 200 / 900 */
+        .opt2-news {
+            background-color: #fecdd3;
+            color: #881337;
+        }
+
+        /* Rose 200 / 900 */
+
+        /* Option 3: Subtle Outlines (Transparent BG + Border + Text) */
+        /* Very versatile, takes on page background color */
+        .opt3-research {
+            background: transparent;
+            border: 1px solid #10b981;
+            color: #10b981;
+        }
+
+        /* Emerald 500 */
+        .opt3-review {
+            background: transparent;
+            border: 1px solid #3b82f6;
+            color: #3b82f6;
+        }
+
+        /* Blue 500 */
+        .opt3-letter {
+            background: transparent;
+            border: 1px solid #f59e0b;
+            color: #f59e0b;
+        }
+
+        /* Amber 500 */
+        .opt3-commentary {
+            background: transparent;
+            border: 1px solid #8b5cf6;
+            color: #8b5cf6;
+        }
+
+        /* Violet 500 */
+        .opt3-news {
+            background: transparent;
+            border: 1px solid #f43f5e;
+            color: #f43f5e;
+        }
+
+        /* Rose 500 */
+    </style>
+</head>
+
+<body>
+
+    <!-- Option 1: Modern Solids -->
+    <div class="palette-section">
+        <div class="palette-title">Option 1: Vibrant Solids</div>
+        <div class="palette-desc">Bold mid-tone colors with white text. High contrast, distinct button-like appearance.
+        </div>
+        <div class="container">
+            <!-- Render this palette across columns -->
+            <div class="theme-col theme-light">
+                <div class="theme-name">Light</div>
+                <div class="badge-grid" id="opt1-light"></div>
+            </div>
+            <div class="theme-col theme-dark">
+                <div class="theme-name">Dark</div>
+                <div class="badge-grid" id="opt1-dark"></div>
+            </div>
+            <div class="theme-col theme-sepia">
+                <div class="theme-name">Sepia</div>
+                <div class="badge-grid" id="opt1-sepia"></div>
+            </div>
+            <div class="theme-col theme-coral">
+                <div class="theme-name">Coral</div>
+                <div class="badge-grid" id="opt1-coral"></div>
+            </div>
+            <div class="theme-col theme-blue">
+                <div class="theme-name">Blue</div>
+                <div class="badge-grid" id="opt1-blue"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 2: Rich Tints -->
+    <div class="palette-section">
+        <div class="palette-title">Option 2: Rich Tints</div>
+        <div class="palette-desc">Softer backgrounds (heavier than current) with dark text. Traditional "tag" look.
+        </div>
+        <div class="container">
+            <div class="theme-col theme-light">
+                <div class="theme-name">Light</div>
+                <div class="badge-grid" id="opt2-light"></div>
+            </div>
+            <div class="theme-col theme-dark">
+                <div class="theme-name">Dark</div>
+                <div class="badge-grid" id="opt2-dark"></div>
+            </div>
+            <div class="theme-col theme-sepia">
+                <div class="theme-name">Sepia</div>
+                <div class="badge-grid" id="opt2-sepia"></div>
+            </div>
+            <div class="theme-col theme-coral">
+                <div class="theme-name">Coral</div>
+                <div class="badge-grid" id="opt2-coral"></div>
+            </div>
+            <div class="theme-col theme-blue">
+                <div class="theme-name">Blue</div>
+                <div class="badge-grid" id="opt2-blue"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 3: Outlines -->
+    <div class="palette-section">
+        <div class="palette-title">Option 3: Modern Outlines</div>
+        <div class="palette-desc">Transparent background with colored border. Adapts naturally to any background.</div>
+        <div class="container">
+            <div class="theme-col theme-light">
+                <div class="theme-name">Light</div>
+                <div class="badge-grid" id="opt3-light"></div>
+            </div>
+            <div class="theme-col theme-dark">
+                <div class="theme-name">Dark</div>
+                <div class="badge-grid" id="opt3-dark"></div>
+            </div>
+            <div class="theme-col theme-sepia">
+                <div class="theme-name">Sepia</div>
+                <div class="badge-grid" id="opt3-sepia"></div>
+            </div>
+            <div class="theme-col theme-coral">
+                <div class="theme-name">Coral</div>
+                <div class="badge-grid" id="opt3-coral"></div>
+            </div>
+            <div class="theme-col theme-blue">
+                <div class="theme-name">Blue</div>
+                <div class="badge-grid" id="opt3-blue"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const types = ['Research', 'Review', 'Letter', 'Commentary', 'News'];
+
+        function fillGrid(id, optionClassPrefix) {
+            const container = document.getElementById(id);
+            types.forEach(type => {
+                const el = document.createElement('div');
+                el.className = `badge ${optionClassPrefix}-${type.toLowerCase()}`;
+                el.textContent = type;
+                container.appendChild(el);
+            });
+            // Add a spacer to see contrast against bg
+            const spacer = document.createElement('div');
+            spacer.style.height = '10px';
+            container.appendChild(spacer);
+        }
+
+        const themes = ['light', 'dark', 'sepia', 'coral', 'blue'];
+        const options = ['opt1', 'opt2', 'opt3'];
+
+        options.forEach(opt => {
+            themes.forEach(theme => {
+                fillGrid(`${opt}-${theme}`, opt);
+            });
+        });
+    </script>
+</body>
+
+</html>

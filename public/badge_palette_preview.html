@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge Palette Preview</title>
+    <style>
+        /* Base Reset */
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        
+        /* Theme Variables from globals.css */
+        :root {
+            --color-bg: #f6f6f7;
+            --color-ink: #1a1a1a;
+            --color-ink-soft: #525252;
+            --color-surface: #ffffff;
+            --color-border: #e5e5e5;
+        }
+
+        [data-theme='dark'] {
+            --color-bg: #0a0a0a;
+            --color-surface: #151515;
+            --color-ink: #ededed;
+            --color-ink-soft: #a8a8a8;
+            --color-border: #2a2a2a;
+        }
+
+        [data-theme='sepia'] {
+            --color-bg: #f4f1e8;
+            --color-surface: #faf8f3;
+            --color-ink: #3d3d2e;
+            --color-ink-soft: #6b6b5a;
+            --color-border: #d4c9b8;
+        }
+
+        [data-theme='coral'] {
+            --color-bg: #1a1a1a;
+            --color-surface: #242424;
+            --color-ink: #d4d4d4;
+            --color-ink-soft: #737373;
+            --color-border: #333333;
+        }
+
+        /* Proposed Badge Variables - Default/Light */
+        :root {
+            --badge-research-bg: #d1fae5; --badge-research-text: #047857;
+            --badge-review-bg: #dbeafe; --badge-review-text: #1d4ed8;
+            --badge-letter-bg: #fef3c7; --badge-letter-text: #b45309;
+            --badge-commentary-bg: #fef9c3; --badge-commentary-text: #a16207;
+            --badge-news-bg: #ffe4e6; --badge-news-text: #be123c;
+            --badge-editorial-bg: #e2e8f0; --badge-editorial-text: #475569;
+            --badge-preprint-bg: #ede9fe; --badge-preprint-text: #6d28d9;
+            --badge-other-bg: #f3f4f6; --badge-other-text: #4b5563;
+        }
+
+        /* Proposed Badge Variables - Dark */
+        [data-theme='dark'] {
+            --badge-research-bg: #064e3b; --badge-research-text: #d1fae5;
+            --badge-review-bg: #1e3a8a; --badge-review-text: #dbeafe;
+            --badge-letter-bg: #78350f; --badge-letter-text: #fef3c7;
+            --badge-commentary-bg: #713f12; --badge-commentary-text: #fef9c3;
+            --badge-news-bg: #881337; --badge-news-text: #ffe4e6;
+            --badge-editorial-bg: #334155; --badge-editorial-text: #f1f5f9;
+            --badge-preprint-bg: #4c1d95; --badge-preprint-text: #ede9fe;
+            --badge-other-bg: #374151; --badge-other-text: #f3f4f6;
+        }
+
+        /* Proposed Badge Variables - Sepia (Earthy/Muted) */
+        [data-theme='sepia'] {
+            --badge-research-bg: #e2e8d0; --badge-research-text: #3a5c2d;
+            --badge-review-bg: #dce3e8; --badge-review-text: #3a556a;
+            --badge-letter-bg: #f3e9d0; --badge-letter-text: #8c5a2b;
+            --badge-commentary-bg: #f3edce; --badge-commentary-text: #8c732b;
+            --badge-news-bg: #ebd4d4; --badge-news-text: #8c3b3b;
+            --badge-editorial-bg: #e0ddd5; --badge-editorial-text: #59594f;
+            --badge-preprint-bg: #e0dce8; --badge-preprint-text: #5d4b7a;
+            --badge-other-bg: #e8e6e1; --badge-other-text: #66665c;
+        }
+
+        /* Proposed Badge Variables - Coral (Dark with pop) */
+        [data-theme='coral'] {
+            --badge-research-bg: #132e25; --badge-research-text: #6ee7b7;
+            --badge-review-bg: #172554; --badge-review-text: #93c5fd;
+            --badge-letter-bg: #451a03; --badge-letter-text: #fcd34d;
+            --badge-commentary-bg: #422006; --badge-commentary-text: #fcd34d;
+            --badge-news-bg: #4c0519; --badge-news-text: #fda4af;
+            --badge-editorial-bg: #1e293b; --badge-editorial-text: #cbd5e1;
+            --badge-preprint-bg: #2e1065; --badge-preprint-text: #c4b5fd;
+            --badge-other-bg: #1f2937; --badge-other-text: #d1d5db;
+        }
+    
+        /* Layout */
+        .preview-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .theme-block {
+            background-color: var(--color-bg);
+            color: var(--color-ink);
+            padding: 20px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+        }
+
+        h2 { margin-top: 0; font-size: 1.2rem; margin-bottom: 20px; }
+        
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 12px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            text-transform: capitalize;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 15px 0 10px;
+            color: var(--color-ink-soft);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <!-- Light Theme -->
+        <div class="theme-block" data-theme="light">
+            <h2>Light Theme (Default)</h2>
+            <div class="section-title">Current (All Themes Hardcoded)</div>
+            <div class="badge-grid" id="light-current"></div>
+            <div class="section-title">Proposed (Variables)</div>
+            <div class="badge-grid" id="light-proposed"></div>
+        </div>
+
+        <!-- Dark Theme -->
+        <div class="theme-block" data-theme="dark">
+            <h2>Dark Theme</h2>
+            <div class="section-title">Current (All Themes Hardcoded)</div>
+            <div class="badge-grid" id="dark-current"></div>
+            <div class="section-title">Proposed (Variables)</div>
+            <div class="badge-grid" id="dark-proposed"></div>
+        </div>
+
+        <!-- Sepia Theme -->
+        <div class="theme-block" data-theme="sepia">
+            <h2>Sepia Theme</h2>
+            <div class="section-title">Current (All Themes Hardcoded)</div>
+            <div class="badge-grid" id="sepia-current"></div>
+            <div class="section-title">Proposed (Variables)</div>
+            <div class="badge-grid" id="sepia-proposed"></div>
+        </div>
+
+        <!-- Coral Theme -->
+        <div class="theme-block" data-theme="coral">
+            <h2>Coral Theme</h2>
+            <div class="section-title">Current (All Themes Hardcoded)</div>
+            <div class="badge-grid" id="coral-current"></div>
+            <div class="section-title">Proposed (Variables)</div>
+            <div class="badge-grid" id="coral-proposed"></div>
+        </div>
+    </div>
+
+    <script>
+        const types = [
+            'Research', 'Review', 'Letter', 'Commentary', 'News', 'Editorial', 'Preprint', 'Other'
+        ];
+
+        // Current Hardcoded Colors (from paperUtils.ts)
+        const currentColors = {
+            'Research': { bg: '#d1fae5', text: '#047857' },
+            'Review': { bg: '#dbeafe', text: '#1d4ed8' },
+            'Letter': { bg: '#fef3c7', text: '#b45309' },
+            'Commentary': { bg: '#fef9c3', text: '#a16207' },
+            'News': { bg: '#ffe4e6', text: '#be123c' },
+            'Editorial': { bg: '#e2e8f0', text: '#475569' },
+            'Preprint': { bg: '#ede9fe', text: '#6d28d9' },
+            'Other': { bg: '#f3f4f6', text: '#4b5563' }
+        };
+
+        function createBadges(containerId, isProposed) {
+            const container = document.getElementById(containerId);
+            types.forEach(type => {
+                const badge = document.createElement('div');
+                badge.className = 'badge';
+                badge.textContent = type;
+                
+                if (isProposed) {
+                    badge.style.backgroundColor = `var(--badge-${type.toLowerCase()}-bg)`;
+                    badge.style.color = `var(--badge-${type.toLowerCase()}-text)`;
+                } else {
+                    const colors = currentColors[type];
+                    badge.style.backgroundColor = colors.bg;
+                    badge.style.color = colors.text;
+                }
+                container.appendChild(badge);
+            });
+        }
+
+        ['light', 'dark', 'sepia', 'coral'].forEach(theme => {
+            createBadges(`${theme}-current`, false);
+            createBadges(`${theme}-proposed`, true);
+        });
+    </script>
+</body>
+</html>
